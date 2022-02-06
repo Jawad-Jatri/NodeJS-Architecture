@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const {connectDB} = require("./db")
 const {listener} = require("./listener")
+const {errorHandlerMiddleware} = require("../api/v1/middlewares/error-handler")
 
 const initialize = (express) => {
   const app = express()
@@ -12,6 +13,7 @@ const initialize = (express) => {
   app.use(helmet());
   app.use(express.json());
   app.use(cors());
+  app.use(errorHandlerMiddleware)
 
   connectDB(mongoose)
   listener(app)
