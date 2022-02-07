@@ -1,29 +1,29 @@
-const {StatusCodes} = require('../utils/status-codes');
-const {ResponseMessage} = require('../utils/response-message');
-const errorHandlerMiddleware = (err, req, res, next) => {
-  let customError = {
-    // set default
-    statusCode: err.statusCode || StatusCodes.HTTP_500_INTERNAL_SERVER_ERROR,
-    msg: err.message || ResponseMessage.ERROR,
-  };
-  if (err.name === 'ValidationError') {
-    customError.msg = Object.values(err.errors)
-      .map((item) => item.message)
-      .join(',');
-    customError.statusCode = StatusCodes.HTTP_400_BAD_REQUEST;
-  }
-  if (err.code && err.code === 11000) {
-    customError.msg = ResponseMessage.DUPLICATE_ERROR + `${Object.keys(
-      err.keyValue
-    )}`;
-    customError.statusCode = StatusCodes.HTTP_400_BAD_REQUEST;
-  }
-  if (err.name === 'CastError') {
-    customError.msg = ResponseMessage.CAST_ERROR + `${err.value}`;
-    customError.statusCode = StatusCodes.HTTP_404_NOT_FOUND;
-  }
+const errorHandlerMiddleware = (StatusCodes,ResponseMessage) => {
+  return function (err, req, res, next) {
+    let customError = {
+      // set default
+      statusCode: err.statusCode || StatusCodes.HTTP_500_INTERNAL_SERVER_ERROR,
+      msg: err.message || ResponseMessage.ERROR,
+    };
+    if (err.name === 'ValidationError') {
+      customError.msg = Object.values(err.errors)
+        .map((item) => item.message)
+        .join(',');
+      customError.statusCode = StatusCodes.HTTP_400_BAD_REQUEST;
+    }
+    if (err.code && err.code === 11000) {
+      customError.msg = ResponseMessage.DUPLICATE_ERROR + `${Object.keys(
+        err.keyValue
+      )}`;
+      customError.statusCode = StatusCodes.HTTP_400_BAD_REQUEST;
+    }
+    if (err.name === 'CastError') {
+      customError.msg = ResponseMessage.CAST_ERROR + `${err.value}`;
+      customError.statusCode = StatusCodes.HTTP_404_NOT_FOUND;
+    }
 
-  return res.status(customError.statusCode).json({msg: customError.msg});
-};
+    return res.status(customError.statusCode).json({error: customError.msg});
+  }
+}
 
 module.exports = {errorHandlerMiddleware};

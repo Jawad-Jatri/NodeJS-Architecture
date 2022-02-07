@@ -6,7 +6,8 @@ const ResponseMessage = {
 
   INVALID_REQUEST_PAYLOAD: "Invalid request payload!",
 
-  AUTHENTICATION_ERROR : "Authentication Failed!",
+  AUTHENTICATION_ERROR : "Auth Failed!",
+  ROUTE_NOT_EXIST : "Route does not exist!",
   ACCESS_DENIED        : "Access denied!",
   TOKEN_EXPIRED        : "Token Expired!",
   REFRESH_TOKEN_SUCCESS: "Token refreshed Successfully!",
