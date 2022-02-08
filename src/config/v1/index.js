@@ -8,10 +8,12 @@ const Path = require("../../api/v1/utils/api-urls")
 const {successCallback} = require("../../api/v1/success-callback")
 const {connectDB} = require("./db")
 
-const v1 = (app, router) => {
-  app.use(Path.API_ROOT_PATH + Path.API_VERSION_PATH, Routes(router, Path, successCallback))
-  app.use(errorHandlerMiddleware(StatusCodes, ResponseMessage))
-  app.use(notFound(StatusCodes, ResponseMessage))
+const v1 = (application) => {
+  const {app} = application
+  const appV1 = Object.freeze({...application, successCallback, mongoose, Path, StatusCodes, ResponseMessage})
+  app.use(Path.API_ROOT_PATH + Path.API_VERSION_PATH, Routes(appV1))
+  app.use(errorHandlerMiddleware(appV1))
+  app.use(notFound(appV1))
   connectDB(mongoose)
 }
 

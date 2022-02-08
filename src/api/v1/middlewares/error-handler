@@ -1,4 +1,4 @@
-const errorHandlerMiddleware = (StatusCodes,ResponseMessage) => {
+const errorHandlerMiddleware = ({StatusCodes, ResponseMessage}) => {
   return function (err, req, res, next) {
     let customError = {
       // set default

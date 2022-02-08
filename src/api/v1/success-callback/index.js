@@ -1,4 +1,4 @@
-const successCallback = (controller) => {
+const successCallback = (app, controller) => {
   return (req, res) => {
     const httpRequest = {
       body: req.body,
@@ -14,7 +14,8 @@ const successCallback = (controller) => {
         'User-Agent': req.get('User-Agent')
       }
     }
-    controller(httpRequest)
+    console.log(httpRequest)
+    controller(app, httpRequest)
       .then(httpResponse => {
         if (httpResponse.headers) {
           res.set(httpResponse.headers)

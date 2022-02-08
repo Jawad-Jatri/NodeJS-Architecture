@@ -1,18 +1,11 @@
-const initialUser = () => {
-  console.log('initialUser')
-}
-const login = async () => {
-  return {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    statusCode: 200,
-    body: {message: 'success'}
-  }
-}
-const refreshToken = () => {
-  console.log('refreshToken')
-}
+const {makeLogin} = require('./login')
+const {makeRefreshToken} = require('./refreshToken')
+const {makeInitialUser} = require('./initialUser')
+
+
+const login = makeLogin()
+const refreshToken = makeRefreshToken()
+const initialUser = makeInitialUser()
 
 module.exports = {
   initialUser, login, refreshToken
