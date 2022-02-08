@@ -120,5 +120,5 @@ module.exports.User = (app) => {
   userSchema.plugin(uniqueValidator, { message: ResponseMessage.VALIDATOR_FIELD_EXIST });
   userSchema.plugin(mongoosePaginate);
 
-  return mongoose.model("User", userSchema);
+  return mongoose.models.User || mongoose.model("User", userSchema);
 }

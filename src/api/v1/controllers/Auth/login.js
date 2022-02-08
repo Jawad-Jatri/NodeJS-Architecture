@@ -1,6 +1,7 @@
-module.exports.makeLogin = () => {
+module.exports.makeLogin = ({loginService}) => {
   return async (app,httpRequest) => {
     const {StatusCodes, ResponseMessage} = app
+    const login = await loginService(httpRequest)
     return {
       headers: {
         'Content-Type': 'application/json'

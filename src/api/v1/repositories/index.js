@@ -13,13 +13,13 @@ const connectDb = async () => {
       await mongoose.connect(process.env.MONGODB_CON_STRING_PRODUCTION);
     }
   }
-  console.log("called")
+  console.log(mongoose.connection.readyState)
   return Object.freeze({
     mongoose, mongoosePaginate, uniqueValidator, ResponseMessage
   })
 }
 
-const userDB = makeUserDb(connectDb)
+const userDB = makeUserDb({connectDb})
 
 module.exports = {
   connectDb,

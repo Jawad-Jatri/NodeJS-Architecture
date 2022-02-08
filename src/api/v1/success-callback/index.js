@@ -14,7 +14,6 @@ const successCallback = (app, controller) => {
         'User-Agent': req.get('User-Agent')
       }
     }
-    console.log(httpRequest)
     controller(app, httpRequest)
       .then(httpResponse => {
         if (httpResponse.headers) {
