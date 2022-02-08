@@ -3,7 +3,13 @@ const ResponseMessage = {
   ERROR  : "SOMETHING WENT WRONG.PLEASE CHECK.",
   CAST_ERROR  : "No item found with id : ",
   DUPLICATE_ERROR  : "Duplicate value entered for field : ",
-
+  NAME_FIELD_REQUIRED : "name field is required!",
+  PHONE_FIELD_REQUIRED : "phone field is required!",
+  PASSWORD_FIELD_REQUIRED : "password field is required!",
+  USER_TYPE_FIELD_REQUIRED : "user type field is required!",
+  ROLES_FIELD_REQUIRED : "roles field is required!",
+  STATUS_FIELD_REQUIRED : "status field is required!",
+  VALIDATOR_FIELD_EXIST : "{PATH} already exists!",
   INVALID_REQUEST_PAYLOAD: "Invalid request payload!",
 
   AUTHENTICATION_ERROR : "Auth Failed!",
