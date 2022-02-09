@@ -2,15 +2,23 @@
 
 const makeUserDb = ({connectDb},User) => {
   const findAll = async () => {
-    const db = await connectDb()
+    await connectDb()
     // const user = User(db)
     return {
       name: "akil",
       address: "Dhaka"
     }
   }
+  const insert = async (user) => {
+    await connectDb()
+    const userInsert = await User.create(user)
+    return {
+      ...userInsert
+    }
+  }
   return Object.freeze({
-    findAll
+    findAll,
+    insert
   })
 }
 

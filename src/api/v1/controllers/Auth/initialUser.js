@@ -1,10 +1,20 @@
 module.exports.makeInitialUser = ({initialUserService}) => {
   return async (app, httpRequest) => {
-    const {StatusCodes, ResponseMessage, CustomError} = app
+    const {StatusCodes, ResponseMessage, Validator} = app
     const {body} = httpRequest
 
-    // if(!body.name || typeof username !== "string") throw new CustomError.BadRequestError(ResponseMessage.INVALID_USER)
-    // if(!password || typeof password !== "string" || password.length < 8) throw new CustomError.BadRequestError(ResponseMessage.INVALID_USER)
+    Validator.isRequired("name",body.name)
+    Validator.isRequired("phone",body.phone)
+    Validator.isRequired("password",body.password)
+    Validator.isRequired("roles",body.roles)
+    Validator.isType(body.name,"string")
+    Validator.isType(body.phone,"string")
+    Validator.isType(body.password,"string")
+    Validator.isType(body.roles,"string")
+    Validator.isValidPassword(body.password,8)
+    !!body.email ? Validator.isValidEmail(body.email) : null
+
+    let initUser = await initialUserService(body)
 
     return {
       headers: {

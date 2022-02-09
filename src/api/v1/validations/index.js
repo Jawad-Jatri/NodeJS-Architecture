@@ -1,5 +1,3 @@
-// const ResponseMessage = require("../utils/response-message");
-// const {CustomError} = require("../errors")
 const {validEmail} = require("./isValidEmail")
 const {required} = require("./isRequired")
 const {type} = require("./isType")

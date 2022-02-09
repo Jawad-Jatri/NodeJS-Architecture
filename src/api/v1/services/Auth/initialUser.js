@@ -1,5 +1,6 @@
-module.exports.makeInitialUserService = () => {
+module.exports.makeInitialUserService = ({userDb}) => {
   return async (payload) => {
+
   }
 }
 
