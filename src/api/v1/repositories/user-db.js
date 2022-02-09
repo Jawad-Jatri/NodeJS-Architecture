@@ -1,9 +1,9 @@
-const {User} = require("../models/User")
+// const {User} = require("../models/User")
 
-const makeUserDb = ({connectDb}) => {
+const makeUserDb = ({connectDb},User) => {
   const findAll = async () => {
     const db = await connectDb()
-    const user = User(db)
+    // const user = User(db)
     return {
       name: "akil",
       address: "Dhaka"

@@ -1,5 +1,5 @@
 const successCallback = (app, controller) => {
-  return (req, res) => {
+  return (req, res, next) => {
     const httpRequest = {
       body: req.body,
       query: req.query,
@@ -21,6 +21,9 @@ const successCallback = (app, controller) => {
         }
         res.type('json')
         res.status(httpResponse.statusCode).send(httpResponse.body)
+      })
+      .catch((err) => {
+        next(err)
       })
   }
 }
