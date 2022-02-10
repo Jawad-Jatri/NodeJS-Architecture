@@ -1,4 +1,4 @@
-module.exports.makeRefreshTokenService = () => {
+module.exports.makeRefreshTokenService = ({User}) => {
   return async (payload) => {
   }
 }

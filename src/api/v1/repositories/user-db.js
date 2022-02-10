@@ -11,10 +11,8 @@ const makeUserDb = ({connectDb},User) => {
   }
   const insert = async (user) => {
     await connectDb()
-    const userInsert = await User.create(user)
-    return {
-      ...userInsert
-    }
+    let newUser = new User(user)
+    return await newUser.save()
   }
   return Object.freeze({
     findAll,

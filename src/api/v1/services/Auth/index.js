@@ -1,11 +1,12 @@
 const {makeLoginService} = require("./login")
 const {makeInitialUserService} = require("./initialUser")
 const {makeRefreshTokenService} = require("./refreshToken")
-const {userDB} = require("../../repositories")
+const {User} = require("../../repositories")
 
-const loginService = makeLoginService({userDB})
-const initialUserService = makeInitialUserService({userDB})
-const refreshTokenService = makeRefreshTokenService({userDB})
+
+const loginService = makeLoginService({User})
+const initialUserService = makeInitialUserService({User})
+const refreshTokenService = makeRefreshTokenService({User})
 
 module.exports = {
   loginService, initialUserService, refreshTokenService

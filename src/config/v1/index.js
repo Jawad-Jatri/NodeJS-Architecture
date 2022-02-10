@@ -4,6 +4,7 @@ const {ResponseMessage} = require('../../api/v1/utils/response-message');
 const {errorHandlerMiddleware} = require("../../api/v1/middlewares/error-handler")
 const {notFound} = require("../../api/v1/middlewares/not-found")
 const Path = require("../../api/v1/utils/api-urls")
+const Bcrypt = require("../../api/v1/utils/bcrypt")
 const {successCallback} = require("../../api/v1/success-callback")
 const CustomError = require("../../api/v1/errors")
 const {validator} = require("../../api/v1/validations")
@@ -18,7 +19,8 @@ const v1 = (application) => {
     StatusCodes,
     ResponseMessage,
     CustomError,
-    Validator
+    Validator,
+    Bcrypt
   })
   app.use(Path.API_ROOT_PATH + Path.API_VERSION_PATH, Routes(appV1))
   app.use(errorHandlerMiddleware(appV1))

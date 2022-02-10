@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
 const uniqueValidator = require("mongoose-unique-validator");
 const {ResponseMessage} = require("../utils/response-message")
-const {User} = require("../models/User")
+const {UserSchema} = require("../models/User")
 
 const {makeUserDb} = require("./user-db")
 
@@ -20,9 +20,9 @@ const model = (modelName, schema) => {
   return mongoose.model(modelName, schema({mongoose, mongoosePaginate, uniqueValidator, ResponseMessage}))
 }
 
-const userDB = makeUserDb({connectDb}, model("User", User))
+const User = makeUserDb({connectDb}, model("User", UserSchema))
 
 module.exports = {
   connectDb,
-  userDB
+  User
 }

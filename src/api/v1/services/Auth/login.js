@@ -1,6 +1,6 @@
-module.exports.makeLoginService = ({userDB}) => {
+module.exports.makeLoginService = ({User}) => {
   return async (payload) => {
-    return await userDB.findAll()
+    return await User.findAll()
   }
 }
 
