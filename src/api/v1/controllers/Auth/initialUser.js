@@ -1,6 +1,6 @@
 module.exports.makeInitialUser = ({initialUserService}) => {
   return async (app, httpRequest) => {
-    const {StatusCodes, ResponseMessage, Validator, Bcrypt} = app
+    const {StatusCodes, ResponseMessage, Validator, Bcrypt, CustomError} = app
     const {body} = httpRequest
 
     Validator.isRequired("name", body.name)
@@ -26,16 +26,8 @@ module.exports.makeInitialUser = ({initialUserService}) => {
           user : initUser
         }
       }
-    }else{
-      return {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        statusCode: StatusCodes.HTTP_400_BAD_REQUEST,
-        body: {
-          message: ResponseMessage.ERROR
-        }
-      }
+    }else {
+      throw new CustomError.BadRequestError(ResponseMessage.INVALID_REQUEST_PAYLOAD)
     }
   }
 }
