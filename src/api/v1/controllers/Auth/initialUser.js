@@ -1,6 +1,7 @@
+const Roles = require("../../utils/roles");
 module.exports.makeInitialUser = ({initialUserService}) => {
   return async (app, httpRequest) => {
-    const {StatusCodes, ResponseMessage, Validator, Bcrypt, CustomError} = app
+    const {StatusCodes, ResponseMessage, Validator, Bcrypt, CustomError, Roles} = app
     const {body} = httpRequest
 
     Validator.isRequired("name", body.name)
@@ -12,6 +13,7 @@ module.exports.makeInitialUser = ({initialUserService}) => {
     Validator.isType(body.password, "string")
     Validator.isType(body.roles, "string")
     Validator.isValidPassword(body.password, 8)
+    Validator.hasValidRoles(body.roles.split(","), Roles.Admin)
     body.email ? Validator.isValidEmail(body.email) : null
 
     let initUser = await initialUserService(body, {...Bcrypt})
