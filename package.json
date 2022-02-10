@@ -6,13 +6,13 @@
   "scripts": {
     "start": "nodemon server.js",
     "dev": "nodemon server.js",
+    "test-watch": "jest --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.15",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
@@ -22,6 +22,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
     "mongoose-paginate-v2": "^1.4.2",
-    "mongoose-unique-validator": "^3.0.0"
+    "mongoose-unique-validator": "^3.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.6",
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
   }
 }
