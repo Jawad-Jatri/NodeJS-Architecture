@@ -1,22 +1,39 @@
-// const {User} = require("../models/User")
-
-const makeUserDb = ({connectDb},User) => {
-  const findAll = async () => {
+const makeUserDb = ({connectDb}, User) => {
+  const find = async (phone) => {
     await connectDb()
-    // const user = User(db)
-    return {
-      name: "akil",
-      address: "Dhaka"
+    let user = await User.findOne({phone: phone}).populate("companyId").populate("counterId")
+    if (user) {
+      return user
     }
+    return null;
   }
-  const insert = async (user) => {
+  const findByPhoneWithPassword = async (phone) => {
     await connectDb()
-    let newUser = new User(user)
-    return await newUser.save()
+    let user = await User.findOne({phone: phone}).populate("companyId").populate("counterId").select("+password")
+    if (user) {
+      return user
+    }
+    return null;
+  }
+  const insert = async (request) => {
+    await connectDb()
+    let user = new User(request)
+    return await user.save()
+  }
+
+  const update = async (filter, userInfo) => {
+    await connectDb()
+    let user = await User.updateOne(filter, {$set: userInfo}, {new: true, runValidators: true, context: "query"})
+    if(user){
+      return user
+    }
+    return null
   }
   return Object.freeze({
-    findAll,
-    insert
+    find,
+    findByPhoneWithPassword,
+    insert,
+    update
   })
 }
 

@@ -9,6 +9,7 @@ const Path = require("../../api/v1/utils/api-urls")
 const Roles = require("../../api/v1/utils/roles")
 const CustomError = require("../../api/v1/errors")
 const Bcrypt = require("../../api/v1/utils/bcrypt")
+const JWT = require("../../api/v1/utils/jwt")
 
 const v1 = (application) => {
   const {app} = application
@@ -22,7 +23,8 @@ const v1 = (application) => {
     CustomError,
     Validator,
     Bcrypt,
-    Roles
+    Roles,
+    JWT
   })
   app.use(Path.API_ROOT_PATH + Path.API_VERSION_PATH, Routes(appV1))
   app.use(errorHandlerMiddleware(appV1))

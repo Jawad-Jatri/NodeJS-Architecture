@@ -4,10 +4,8 @@ const hashPassword = (password) => {
   return bcrypt.hashSync(password, 10)
 }
 
-const checkPassword = async (requestedPassword, actualPassword) => {
-  bcrypt.compare(requestedPassword, actualPassword, (err, success) => {
-    return success
-  })
+const checkPassword = async(requestedPassword, actualPassword) => {
+  return bcrypt.compare(requestedPassword, actualPassword)
 }
 
 module.exports = {

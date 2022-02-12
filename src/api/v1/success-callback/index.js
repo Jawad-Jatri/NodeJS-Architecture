@@ -19,6 +19,12 @@ const successCallback = (app, controller) => {
         if (httpResponse.headers) {
           res.set(httpResponse.headers)
         }
+        if (httpResponse.cookies) {
+          console.log(httpResponse.cookies)
+          httpResponse.cookies.forEach(cookie => {
+            res.cookie(cookie.key, cookie.value, cookie.options)
+          })
+        }
         res.type('json')
         res.status(httpResponse.statusCode).send(httpResponse.body)
       })

@@ -1,4 +1,3 @@
-const Roles = require("../../utils/roles");
 module.exports.makeInitialUser = ({initialUserService}) => {
   return async (app, httpRequest) => {
     const {StatusCodes, ResponseMessage, Validator, Bcrypt, CustomError, Roles} = app

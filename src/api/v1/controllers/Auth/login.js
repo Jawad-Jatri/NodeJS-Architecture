@@ -1,21 +1,26 @@
 module.exports.makeLogin = ({loginService}) => {
   return async (app, httpRequest) => {
     const {StatusCodes, ResponseMessage, Validator} = app
-    const {username, password} = httpRequest.body
+    const {body} = httpRequest
 
-    Validator.isRequired("username",username)
-    Validator.isRequired("password",password)
-    Validator.isType(username,"string")
-    Validator.isType(password,"string")
-    Validator.isValidPassword(password,8)
+    Validator.isRequired("username", body.username)
+    Validator.isRequired("password", body.password)
+    Validator.isType(body.username, "string")
+    Validator.isType(body.password, "string")
+    Validator.isValidPassword(body.password, 8)
 
-    const login = await loginService(httpRequest)
+    const login = await loginService(app, body)
     return {
       headers: {
         'Content-Type': 'application/json'
       },
+      cookies: login.cookies,
       statusCode: StatusCodes.HTTP_200_OK,
-      body: {message: ResponseMessage.SUCCESS, login}
+      body: {
+        message: ResponseMessage.LOGIN_SUCCESS,
+        token: login.accessToken,
+        refreshToken: login.refreshToken
+      }
     }
   }
 }

@@ -3,6 +3,8 @@ const mongoosePaginate = require("mongoose-paginate-v2");
 const uniqueValidator = require("mongoose-unique-validator");
 const {ResponseMessage} = require("../utils/response-message")
 const {UserSchema} = require("../models/User")
+const {CompanySchema} = require("../models/Company")
+const {CounterSchema} = require("../models/Counter")
 
 const {makeUserDb} = require("./user-db")
 
@@ -21,8 +23,12 @@ const model = (modelName, schema) => {
 }
 
 const User = makeUserDb({connectDb}, model("User", UserSchema))
+const Company = makeUserDb({connectDb}, model("Company", CompanySchema))
+const Counter = makeUserDb({connectDb}, model("Counter", CounterSchema))
 
 module.exports = {
   connectDb,
-  User
+  User,
+  Company,
+  Counter
 }
