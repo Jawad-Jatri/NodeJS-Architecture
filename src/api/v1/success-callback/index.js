@@ -20,7 +20,6 @@ const successCallback = (app, controller) => {
           res.set(httpResponse.headers)
         }
         if (httpResponse.cookies) {
-          console.log(httpResponse.cookies)
           httpResponse.cookies.forEach(cookie => {
             res.cookie(cookie.key, cookie.value, cookie.options)
           })
