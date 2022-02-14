@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken'
 
-const createToken = ({payload}) => {
+export const createToken = ({payload}) => {
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: process.env.ACCESS_TOKEN_VALIDITY});
 };
 
@@ -8,9 +8,9 @@ const createRefreshToken = ({payload}) => {
   return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {expiresIn: process.env.REFRESH_TOKEN_VALIDITY});
 };
 
-const isTokenValid = (token) => jwt.verify(token, process.env.JWT_SECRET);
+export const isTokenValid = (token) => jwt.verify(token, process.env.JWT_SECRET);
 
-const authenticationToken = (token, refreshToken) => {
+export const  authenticationToken = (token, refreshToken) => {
   const accessTokenJWT = createToken({payload: token});
   const refreshTokenJWT = createRefreshToken({payload: refreshToken});
 
@@ -45,9 +45,3 @@ const authenticationToken = (token, refreshToken) => {
   }
 };
 
-module.exports = {
-  createToken,
-  createRefreshToken,
-  isTokenValid,
-  authenticationToken,
-};

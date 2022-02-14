@@ -1,4 +1,4 @@
-const AdminRoutes = (app) => {
+export const AdminRoutes = (app) => {
   const {router, Path, successCallback} = app
   return router.post(Path.AUTH.INIT_PATH, () => {
     console.log("INIT_PATH")
@@ -11,6 +11,4 @@ const AdminRoutes = (app) => {
     })
 }
 
-module.exports = {
-  AdminRoutes
-}
+

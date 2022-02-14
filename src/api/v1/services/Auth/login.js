@@ -1,4 +1,4 @@
-module.exports.makeLoginService = ({User}) => {
+export const makeLoginService = ({User}) => {
   return async (app, body) => {
     let {ResponseMessage, CustomError, Bcrypt, JWT} = app
     let {checkPassword} = Bcrypt

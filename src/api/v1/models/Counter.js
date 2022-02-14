@@ -1,4 +1,4 @@
-module.exports.CounterSchema = (app) => {
+export const CounterSchema = (app) => {
   const {mongoose, mongoosePaginate, uniqueValidator, ResponseMessage} = app
 
   const counterSchema =  new mongoose.Schema({

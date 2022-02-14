@@ -1,4 +1,4 @@
-const Admin = {
+export const Admin = {
   dashboard: 1,
   reports: 2,
   adminRead: 3,
@@ -6,7 +6,8 @@ const Admin = {
   companyDeployRead: 5,
   companyDeployWrite: 6,
 }
-const Owner = {
+
+export const Owner = {
   dashboard: 51,
   reports: 52,
   companySetupRead: 53,
@@ -18,7 +19,8 @@ const Owner = {
   agentBalanceRecharge: 59,
   agentBalanceHistory: 60,
 }
-const Counterman = {
+
+export const Counterman = {
   ticketBooking: 101,
   fareDiscount: 102,
   reports: 103,
@@ -35,7 +37,8 @@ const Counterman = {
   cancelReservation: 114,
   cancelOthersReservation: 115,
 }
-const Agent = {
+
+export const Agent = {
   ticketBooking: 151,
   fareDiscount: 152,
   reports: 153,
@@ -50,6 +53,3 @@ const Agent = {
   cancelOthersTicket: 162,
 }
 
-module.exports = {
-  Admin, Owner, Counterman, Agent
-};

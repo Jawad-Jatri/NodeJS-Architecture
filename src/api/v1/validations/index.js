@@ -1,10 +1,11 @@
-const {validEmail} = require("./isValidEmail")
-const {required} = require("./isRequired")
-const {type} = require("./isType")
-const {validPassword} = require("./isValidPassword")
-const {validRoles} = require("./hasValidRoles")
+import {validEmail} from "./isValidEmail.js"
+import {required} from "./isRequired.js"
+import {type} from "./isType.js"
+import {validPassword} from "./isValidPassword.js"
+import {validRoles} from "./hasValidRoles.js"
 
-const validator = ({CustomError}) => {
+
+export const validator = ({CustomError}) => {
   const isValidEmail = validEmail({CustomError})
   const isRequired = required({CustomError})
   const isType = type({CustomError})
@@ -16,6 +17,3 @@ const validator = ({CustomError}) => {
   })
 }
 
-module.exports = {
-  validator
-}

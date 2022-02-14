@@ -1,4 +1,4 @@
-module.exports.type = ({CustomError}) => {
+export const type = ({CustomError}) => {
   return (key, value) => {
     if(typeof key === value){
       return true

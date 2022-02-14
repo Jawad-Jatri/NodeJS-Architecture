@@ -1,4 +1,4 @@
-module.exports.CompanySchema = (app) => {
+export const CompanySchema = (app) => {
   const {mongoose, mongoosePaginate, uniqueValidator, ResponseMessage} = app
 
   const companySchema =  new mongoose.Schema({

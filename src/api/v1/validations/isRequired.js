@@ -1,4 +1,4 @@
-module.exports.required = ({CustomError}) => {
+export const required = ({CustomError}) => {
   return (key, value) => {
     if (value) {
       return true

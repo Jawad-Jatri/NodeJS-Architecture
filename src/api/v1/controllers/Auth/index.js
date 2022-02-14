@@ -1,16 +1,15 @@
-const {makeLogin} = require('./login')
-const {makeRefreshToken} = require('./refreshToken')
-const {makeInitialUser} = require('./initialUser')
+import { makeLogin } from "./login.js";
+import { makeRefreshToken } from "./refreshToken.js";
+import { makeInitialUser } from "./initialUser.js";
 
-const {
-  loginService, refreshTokenService, initialUserService
-} = require('../../services/Auth')
+import {
+  loginService,
+  refreshTokenService,
+  initialUserService,
+} from "../../services/Auth/index.js";
+
+export const login = makeLogin({ loginService });
+export const refreshToken = makeRefreshToken({ refreshTokenService });
+export const initialUser = makeInitialUser({ initialUserService });
 
 
-const login = makeLogin({loginService})
-const refreshToken = makeRefreshToken({refreshTokenService})
-const initialUser = makeInitialUser({initialUserService})
-
-module.exports = {
-  initialUser, login, refreshToken
-}

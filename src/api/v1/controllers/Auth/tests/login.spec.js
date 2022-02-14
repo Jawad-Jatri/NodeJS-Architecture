@@ -1,5 +1,5 @@
-const request = require("supertest")
-const app = require("../../../../../config")
+import request from "supertest"
+import app from "../../../../../config"
 
 describe('login controller', () => {
   it('should successfully login', async () => {

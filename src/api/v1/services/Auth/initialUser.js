@@ -1,4 +1,4 @@
-module.exports.makeInitialUserService = ({User}) => {
+export const makeInitialUserService = ({User}) => {
   return async (body, {hashPassword}) => {
     let user = {
       name: body.name,

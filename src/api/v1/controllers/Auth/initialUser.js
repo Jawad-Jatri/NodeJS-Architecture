@@ -1,4 +1,4 @@
-module.exports.makeInitialUser = ({initialUserService}) => {
+export const makeInitialUser = ({initialUserService}) => {
   return async (app, httpRequest) => {
     const {StatusCodes, ResponseMessage, Validator, Bcrypt, CustomError, Roles} = app
     const {body} = httpRequest

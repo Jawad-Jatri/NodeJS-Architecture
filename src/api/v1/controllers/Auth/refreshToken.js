@@ -1,4 +1,4 @@
-module.exports.makeRefreshToken = ({refreshTokenService}) => {
+export const makeRefreshToken = ({refreshTokenService}) => {
   return async (app,httpRequest) => {
     const {StatusCodes, ResponseMessage} = app
     return {

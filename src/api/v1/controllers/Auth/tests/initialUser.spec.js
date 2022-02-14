@@ -1,6 +1,6 @@
-const request = require("supertest")
-const app = require("../../../../../config")
-const {makeFakeUser} = require("../../../../../../__test__/user")
+import request from "supertest"
+import app from "../../../../../config"
+import {makeFakeUser} from "../../../../../../__test__/user"
 
 describe('initialUser controller', () => {
   it('should successfully POST an user', async () => {

@@ -1,4 +1,4 @@
-module.exports.validEmail = ({CustomError}) => {
+export const validEmail = ({CustomError}) => {
   return (email) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
       return true

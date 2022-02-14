@@ -1,4 +1,4 @@
-module.exports.UserSchema = (app) => {
+export const UserSchema = (app) => {
   const {mongoose, mongoosePaginate, uniqueValidator, ResponseMessage} = app
 
   const userSchema = new mongoose.Schema(

@@ -1,4 +1,4 @@
-module.exports.validPassword = ({CustomError}) => {
+export const validPassword = ({CustomError}) => {
   return (password, len) => {
     if (password.length >= len) {
       return true

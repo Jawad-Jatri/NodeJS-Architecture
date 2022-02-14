@@ -1,14 +1,13 @@
-const mongoose = require("mongoose");
-const mongoosePaginate = require("mongoose-paginate-v2");
-const uniqueValidator = require("mongoose-unique-validator");
-const {ResponseMessage} = require("../utils/response-message")
-const {UserSchema} = require("../models/User")
-const {CompanySchema} = require("../models/Company")
-const {CounterSchema} = require("../models/Counter")
+import mongoose from "mongoose"
+import mongoosePaginate from "mongoose-paginate-v2"
+import uniqueValidator from "mongoose-unique-validator"
+import ResponseMessage from "../utils/responseMessage.js"
+import {UserSchema} from "../models/User.js"
+import {CompanySchema} from "../models/Company.js"
+import {CounterSchema} from "../models/Counter.js"
+import {makeUserDb} from "./userDB.js"
 
-const {makeUserDb} = require("./user-db")
-
-const connectDb = async () => {
+export const connectDb = async () => {
   if (mongoose.connection.readyState !== 1) {
     if (process.env.ENVIRONMENT === "development") {
       await mongoose.connect(process.env.MONGODB_CON_STRING_DEV);
@@ -18,17 +17,12 @@ const connectDb = async () => {
   }
 }
 
-const model = (modelName, schema) => {
+export const model = (modelName, schema) => {
   return mongoose.model(modelName, schema({mongoose, mongoosePaginate, uniqueValidator, ResponseMessage}))
 }
 
-const User = makeUserDb({connectDb}, model("User", UserSchema))
-const Company = makeUserDb({connectDb}, model("Company", CompanySchema))
-const Counter = makeUserDb({connectDb}, model("Counter", CounterSchema))
+export const User = makeUserDb({connectDb}, model("User", UserSchema))
+export const Company = makeUserDb({connectDb}, model("Company", CompanySchema))
+export const Counter = makeUserDb({connectDb}, model("Counter", CounterSchema))
 
-module.exports = {
-  connectDb,
-  User,
-  Company,
-  Counter
-}
+

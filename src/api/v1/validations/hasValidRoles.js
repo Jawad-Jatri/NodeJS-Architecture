@@ -1,4 +1,4 @@
-module.exports.validRoles = ({CustomError}) => {
+ export const validRoles = ({CustomError}) => {
   return (values, roles) => {
     if (values.every(function (e) {
       return Object.values(roles).includes(parseInt(e));

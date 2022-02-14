@@ -1,4 +1,4 @@
-module.exports.makeLogin = ({loginService}) => {
+export const makeLogin = ({loginService}) => {
   return async (app, httpRequest) => {
     const {StatusCodes, ResponseMessage, Validator} = app
     const {body} = httpRequest

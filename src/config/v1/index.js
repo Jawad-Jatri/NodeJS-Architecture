@@ -1,26 +1,26 @@
-const {Routes} = require("../../api/v1/routes")
-const {errorHandlerMiddleware} = require("../../api/v1/middlewares/error-handler")
-const {notFound} = require("../../api/v1/middlewares/not-found")
-const {validator} = require("../../api/v1/validations")
-const {successCallback} = require("../../api/v1/success-callback")
-const {StatusCodes} = require('../../api/v1/utils/status-codes');
-const {ResponseMessage} = require('../../api/v1/utils/response-message');
-const Path = require("../../api/v1/utils/api-urls")
-const Roles = require("../../api/v1/utils/roles")
-const CustomError = require("../../api/v1/errors")
-const Bcrypt = require("../../api/v1/utils/bcrypt")
-const JWT = require("../../api/v1/utils/jwt")
+import {Routes} from "../../api/v1/routes/index.js"
+import {errorHandlerMiddleware} from "../../api/v1/middlewares/errorHandler.js"
+import {notFound} from "../../api/v1/middlewares/notFound.js"
+import {validator} from "../../api/v1/validations/index.js"
+import successCallback from "../../api/v1/successCallback/index.js"
+import StatusCodes from '../../api/v1/utils/statusCode.js'
+import ResponseMessage from '../../api/v1/utils/responseMessage.js'
+import * as Path from "../../api/v1/utils/apiUrls.js"
+import * as Roles from "../../api/v1/utils/roles.js"
+import CustomApiError from "../../api/v1/errors/CustomApiError.js"
+import * as Bcrypt from "../../api/v1/utils/bcrypt.js"
+import * as JWT from "../../api/v1/utils/jwt.js"
 
-const v1 = (application) => {
+export const v1 = (application) => {
   const {app} = application
-  const Validator = validator({CustomError})
+  const Validator = validator({CustomApiError})
   const appV1 = Object.freeze({
     ...application,
     successCallback,
     Path,
     StatusCodes,
     ResponseMessage,
-    CustomError,
+    CustomApiError,
     Validator,
     Bcrypt,
     Roles,
@@ -31,6 +31,4 @@ const v1 = (application) => {
   app.use(notFound(appV1))
 }
 
-module.exports = {
-  v1
-}
+
