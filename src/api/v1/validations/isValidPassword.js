@@ -1,8 +1,8 @@
-export const validPassword = ({CustomError}) => {
+export const validPassword = ({CustomApiError}) => {
   return (password, len) => {
     if (password.length >= len) {
       return true
     }
-    throw new CustomError.BadRequestError(`Invalid Password! Must be greater than ${len}`)
+    throw new CustomApiError.BadRequestError(`Invalid Password! Must be greater than ${len}`)
   }
 }

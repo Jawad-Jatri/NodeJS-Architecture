@@ -1,5 +1,5 @@
 export const CounterSchema = (app) => {
-  const {mongoose, mongoosePaginate, uniqueValidator, ResponseMessage} = app
+  const {mongoose, aggregatePaginate, uniqueValidator, ResponseMessage} = app
 
   const counterSchema =  new mongoose.Schema({
     companyId: {
@@ -36,7 +36,7 @@ export const CounterSchema = (app) => {
   }, {timestamps: true, minimize: false})
 
   counterSchema.plugin(uniqueValidator, { message: ResponseMessage.VALIDATOR_FIELD_EXIST });
-  counterSchema.plugin(mongoosePaginate);
+  counterSchema.plugin(aggregatePaginate);
 
   return counterSchema;
 }

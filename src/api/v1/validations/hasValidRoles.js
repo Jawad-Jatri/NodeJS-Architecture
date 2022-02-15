@@ -1,10 +1,10 @@
- export const validRoles = ({CustomError}) => {
+ export const validRoles = ({CustomApiError}) => {
   return (values, roles) => {
-    if (values.every(function (e) {
-      return Object.values(roles).includes(parseInt(e));
+    if (values.every((error) => {
+      return Object.values(roles).includes(parseInt(error));
     })) {
       return true
     }
-    throw new CustomError.BadRequestError(`Invalid user roles`)
+    throw new CustomApiError.BadRequestError(`Invalid user roles`)
   }
 }

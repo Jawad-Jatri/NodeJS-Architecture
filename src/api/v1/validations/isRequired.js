@@ -1,8 +1,8 @@
-export const required = ({CustomError}) => {
+export const required = ({CustomApiError}) => {
   return (key, value) => {
     if (value) {
       return true
     }
-    throw new CustomError.BadRequestError(`${key} is required`)
+    throw new CustomApiError.BadRequestError(`${key} is required`)
   }
 }

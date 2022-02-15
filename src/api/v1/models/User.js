@@ -1,5 +1,5 @@
 export const UserSchema = (app) => {
-  const {mongoose, mongoosePaginate, uniqueValidator, ResponseMessage} = app
+  const {mongoose, aggregatePaginate, uniqueValidator, ResponseMessage} = app
 
   const userSchema = new mongoose.Schema(
     {
@@ -118,7 +118,7 @@ export const UserSchema = (app) => {
   );
 
   userSchema.plugin(uniqueValidator, { message: ResponseMessage.VALIDATOR_FIELD_EXIST });
-  userSchema.plugin(mongoosePaginate);
+  userSchema.plugin(aggregatePaginate);
 
   return userSchema;
 }

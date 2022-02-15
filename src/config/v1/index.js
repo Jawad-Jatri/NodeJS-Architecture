@@ -1,9 +1,9 @@
 import {Routes} from "../../api/v1/routes/index.js"
-import {errorHandlerMiddleware} from "../../api/v1/middlewares/errorHandler.js"
-import {notFound} from "../../api/v1/middlewares/notFound.js"
+import {errorHandlerMiddleware} from "../../api/v1/middlewares/errorHandlerMiddleware.js"
+import {notFound} from "../../api/v1/middlewares/notFoundMiddleware.js"
 import {validator} from "../../api/v1/validations/index.js"
 import successCallback from "../../api/v1/successCallback/index.js"
-import StatusCodes from '../../api/v1/utils/statusCode.js'
+import StatusCode from '../../api/v1/utils/statusCode.js'
 import ResponseMessage from '../../api/v1/utils/responseMessage.js'
 import * as Path from "../../api/v1/utils/apiUrls.js"
 import * as Roles from "../../api/v1/utils/roles.js"
@@ -18,7 +18,7 @@ export const v1 = (application) => {
     ...application,
     successCallback,
     Path,
-    StatusCodes,
+    StatusCode,
     ResponseMessage,
     CustomApiError,
     Validator,

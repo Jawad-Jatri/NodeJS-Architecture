@@ -5,12 +5,12 @@ import {validPassword} from "./isValidPassword.js"
 import {validRoles} from "./hasValidRoles.js"
 
 
-export const validator = ({CustomError}) => {
-  const isValidEmail = validEmail({CustomError})
-  const isRequired = required({CustomError})
-  const isType = type({CustomError})
-  const isValidPassword = validPassword({CustomError})
-  const hasValidRoles = validRoles({CustomError})
+export const validator = ({CustomApiError}) => {
+  const isValidEmail = validEmail({CustomApiError})
+  const isRequired = required({CustomApiError})
+  const isType = type({CustomApiError})
+  const isValidPassword = validPassword({CustomApiError})
+  const hasValidRoles = validRoles({CustomApiError})
 
   return Object.freeze({
     isValidEmail, isRequired, isType, isValidPassword, hasValidRoles

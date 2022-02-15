@@ -1,5 +1,5 @@
 export const CompanySchema = (app) => {
-  const {mongoose, mongoosePaginate, uniqueValidator, ResponseMessage} = app
+  const {mongoose, aggregatePaginate, uniqueValidator, ResponseMessage} = app
 
   const companySchema =  new mongoose.Schema({
     name: {
@@ -133,7 +133,7 @@ export const CompanySchema = (app) => {
   }, {timestamps: true})
 
   companySchema.plugin(uniqueValidator, { message: ResponseMessage.VALIDATOR_FIELD_EXIST });
-  companySchema.plugin(mongoosePaginate);
+  companySchema.plugin(aggregatePaginate);
 
   return companySchema;
 }

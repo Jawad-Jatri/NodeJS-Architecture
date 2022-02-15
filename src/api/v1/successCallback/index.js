@@ -11,7 +11,8 @@ const successCallback = (app, controller) => {
         'Content-Type': req.get('Content-Type'),
         'Authorization': req.get('Authorization'),
         Referer: req.get('referer'),
-        'User-Agent': req.get('User-Agent')
+				'User-Agent': req.get('User-Agent'),
+				"x-no-compression": req.get('x-no-compression')
       }
     }
     controller(app, httpRequest)
@@ -27,8 +28,8 @@ const successCallback = (app, controller) => {
         res.type('json')
         res.status(httpResponse.statusCode).send(httpResponse.body)
       })
-      .catch((err) => {
-        next(err)
+      .catch((error) => {
+        next(error)
       })
   }
 }

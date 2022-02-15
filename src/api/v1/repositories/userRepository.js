@@ -1,4 +1,4 @@
-export const makeUserDb = ({connectDb}, User) => {
+export const userRepository = ({connectDb}, User) => {
   const find = async (phone) => {
     await connectDb()
     let user = await User.findOne({phone: phone}).populate("companyId").populate("counterId")
