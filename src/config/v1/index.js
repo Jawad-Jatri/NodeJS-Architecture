@@ -1,7 +1,7 @@
 import {Routes} from "../../api/v1/routes/index.js"
 import {errorHandlerMiddleware} from "../../api/v1/middlewares/errorHandlerMiddleware.js"
 import {notFound} from "../../api/v1/middlewares/notFoundMiddleware.js"
-import {validator} from "../../api/v1/validations/index.js"
+// import {validator} from "../../api/v1/validations/index.js"
 import successCallback from "../../api/v1/successCallback/index.js"
 import StatusCode from '../../api/v1/utils/statusCode.js'
 import ResponseMessage from '../../api/v1/utils/responseMessage.js'
@@ -10,10 +10,11 @@ import * as Roles from "../../api/v1/utils/roles.js"
 import CustomApiError from "../../api/v1/errors/CustomApiError.js"
 import * as Bcrypt from "../../api/v1/utils/bcrypt.js"
 import * as JWT from "../../api/v1/utils/jwt.js"
+import Validator from '../../api/v1/validators/index.js'
 
 export const v1 = (application) => {
   const {app} = application
-  const Validator = validator({CustomApiError})
+  // const Validator = validator({CustomApiError})
   const appV1 = Object.freeze({
     ...application,
     successCallback,
