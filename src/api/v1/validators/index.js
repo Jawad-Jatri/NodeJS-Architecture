@@ -1,15 +1,15 @@
-import isNumberValidator from "./number/isNumberValidator";
-import maxNumberValidator from "./number/maxNumberValidator";
-import minNumberValidator from "./number/minNumberValidator";
-import isStringValidator from "./string/isStringValidator";
-import isArrayValidator from './array/isArrayValidator';
-import isObjectValidator from './object/isObjectValidator';
-import requiredValidator from './common/requiredValidator';
-import minLengthValidator from './string/minLengthValidator';
-import maxLengthValidator from './string/maxLengthValidator';
-import isEmailValidator from './string/isEmailValidator';
-import notNullValidator from './common/notNullValidator';
-import isPasswordValidator from './string/isPasswordValidator';
+import isNumberValidator from "./number/isNumberValidator.js";
+import maxNumberValidator from "./number/maxNumberValidator.js";
+import minNumberValidator from "./number/minNumberValidator.js";
+import isStringValidator from "./string/isStringValidator.js";
+import isArrayValidator from './array/isArrayValidator.js';
+import isObjectValidator from './object/isObjectValidator.js';
+import requiredValidator from './common/requiredValidator.js';
+import minLengthValidator from './string/minLengthValidator.js';
+import maxLengthValidator from './string/maxLengthValidator.js';
+import isEmailValidator from './string/isEmailValidator.js';
+import notNullValidator from './common/notNullValidator.js';
+import isPasswordValidator from './string/isPasswordValidator.js';
 
 const Validator = (key, value) => {
   const isString = () => isStringValidator(Validator, key, value);
